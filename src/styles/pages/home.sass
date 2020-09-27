@@ -1,0 +1,171 @@
+.home
+    padding: 50px 100px
+
+// logos
+.logos
+    text-align: center
+    margin-bottom: 30px
+    .logo
+        display: inline-block
+        vertical-align: middle
+        img
+            display: inline-block
+            width: 100%
+    .logo.google-keep
+        width: 50px
+    .logo.vue
+        width: 40px
+    .logo.firebase
+        width: 30px
+    .plus
+        vertical-align: middle
+        margin: 10px
+        display: inline-block
+
+// create note form
+.create-note
+    .backdrop
+        position: fixed
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        z-index: 9
+    form
+        position: relative
+        max-width: 600px
+        margin: 0 auto
+        margin-bottom: 30px
+        padding: 20px
+        background-color: #fff
+        border-radius: 8px
+        z-index: 10
+        box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15)
+        input
+            font-family: 'Balsamiq Sans', cursive
+            font-weight: 700
+            font-size: 18px
+            margin-bottom: 10px
+        textarea
+            font-family: 'Roboto', sans-serif
+            resize: none
+            line-height: 1.5
+            min-height: 6em
+            max-height: 50vh
+            width: 100%
+        button
+            display: flex
+            justify-content: center
+            align-items: center
+            position: absolute
+            right: 18px
+            bottom: -18px
+            background: #42b883
+            color: #fff
+            border: none
+            border-radius: 50%
+            width: 36px
+            height: 36px
+            font-size: 24px
+            line-height: 1
+            text-align: center
+
+
+// notes
+.notes
+    display: grid
+    grid-gap: 20px
+    grid-template-columns: repeat(auto-fill,minmax(270px,1fr))
+    margin: 50px 0
+    .note
+        position: relative
+        padding: 25px 
+        background-color: #fff
+        border: 1px solid #dadce0
+        border-radius: 8px
+        cursor: default
+        transition: all .2s ease-in-out
+        overflow-wrap: break-word
+        &:hover
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15)
+            svg
+                opacity: 1
+        svg
+            position: absolute
+            top: 12px
+            right: 12px
+            width: 25px
+            height: 25px
+            opacity: 0
+            transition: all .2s ease-in-out
+            cursor: pointer
+        h1
+            font-family: 'Balsamiq Sans', cursive
+            font-size: 18px
+            margin-bottom: 17px
+        p
+            margin: 0 0 13px
+
+.edit-modal
+    display: flex
+    align-items: center
+    flex-direction: column
+    position: fixed
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background-color: hsla(0,0%,89.8%,.75)
+    z-index: 100
+    .backdrop
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        z-index: 9
+    .modal
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        margin: 25px
+        padding-top: 20vh
+        .edit-form
+            position: relative
+            z-index: 10    
+            position: relative
+            width: 100%
+            max-width: 600px
+            background: #fff
+            padding: 20px 20px 8px
+            border-radius: 8px
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15)
+            input 
+                font-family: 'Balsamiq Sans', cursive
+                font-weight: 700
+                font-size: 18px
+                margin-bottom: 20px
+            textarea
+                font-family: 'Roboto', sans-serif
+                resize: none
+                line-height: 1.5
+                min-height: 6em
+                max-height: 50vh
+                width: 100%
+        .modal-footer
+            display: flex
+            justify-content: space-between
+            align-items: center
+            .delete-button
+                width: 35px
+                padding: 8px
+                margin-left: -8px
+                opacity: .5
+            .submit-button
+                height: 36px
+                padding: 8px 24px
+                border-radius: 4px
+                font-family: Product Sans,system,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Segoe UI,Arial,sans-serif
+                font-weight: 700
+                font-size: 14px

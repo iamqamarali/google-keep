@@ -1,10 +1,10 @@
 <template>
-    <div class="create-note-form">
+    <div class="create-note">
         <div class="backdrop" @focus="showTitle = false" v-if="showTitle"></div>
         <form ref="form">
-            <input type="text" placeholder="Title" class="form-control" v-if="showTitle" v-model="note.title">
-            <textarea name="" placeholder="Take a note..." class="form-control" @focus="showTitle = true" v-model="note.note"></textarea>
-            <button type="button" @click="addNote">+</button>
+            <input type="text" placeholder="Title" class=" " v-if="showTitle" v-model="note.title">
+            <textarea name="" placeholder="Take a note..." class=" " @focus="showTitle = true" v-model="note.note"></textarea>
+            <button type="button"  @click="addNote">+</button>
         </form>
     </div>
 </template>
@@ -33,6 +33,7 @@
                     title: '',
                     note: ''
                 }                
+                this.showTitle = false
             }
         },
     }

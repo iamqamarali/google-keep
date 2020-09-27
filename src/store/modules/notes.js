@@ -22,7 +22,25 @@ export default {
     mutations: {
         ADD_NOTE(state, note){
             state.notes.push(note)   
-        }
+        },
+        UPDATE_NOTE(state, note){
+            let index = 0;
+            for(index = 0 ; index < state.notes.length; index++){
+                if(state.notes[index].id == note.id ){
+                    break
+                }
+            }
+            state.notes.splice(index, 1, note)
+        },        
+        DELETE_NOTE(state, id){
+            let index = 0;
+            for(index = 0 ; index < state.notes.length; index++){
+                if(state.notes[index].id == id ){
+                    break
+                }
+            }
+            state.notes.splice(index, 1)
+        },        
     },
     actions: {
         async fetchNotes({ commit }){
@@ -39,9 +57,21 @@ export default {
                 title: note.title,
                 note: note.note
             })
-            note.if = noteRef.id
-            console.log(noteRef)
+            note.id = noteRef.id
             commit('ADD_NOTE', note)
+        },
+        async updateNote({ commit }, note){
+           db.collection('notes').doc(note.id)
+            .update({
+                title: note.title,
+                note: note.note
+            })
+            commit('UPDATE_NOTE', note);
+        },
+        async deleteNote({ commit }, id){
+            db.collection('notes').doc(id).delete()
+
+            commit('DELETE_NOTE', id);
         }
     },
 }

@@ -21,7 +21,7 @@ export default {
     },
     mutations: {
         ADD_NOTE(state, note){
-            state.notes.push(note)   
+            state.notes.splice(0, 0, note)
         },
         UPDATE_NOTE(state, note){
             let index = 0;
@@ -43,10 +43,10 @@ export default {
         },        
     },
     actions: {
-        async fetchNotes({ commit }){
-            let notesSnapShot = await db.collection('notes').get()
+        async fetchNotes({ commit, state }){
+            let notesSnapShot = await db.collection('notes').orderBy('created_at', 'desc').get()
             notesSnapShot.forEach(note => {
-                commit('ADD_NOTE', {
+                state.notes.push({
                     id : note.id,
                     ...note.data()
                 })
@@ -55,7 +55,8 @@ export default {
         async addNote({ commit }, note){
             let noteRef = await db.collection('notes').add({
                 title: note.title,
-                note: note.note
+                note: note.note,
+                created_at: new Date()
             })
             note.id = noteRef.id
             commit('ADD_NOTE', note)
